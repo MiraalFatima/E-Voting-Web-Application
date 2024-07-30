@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commence Elections</title>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<style>
+ .container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0 80px;
+  }
+
+  .header {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    max-width: 1298px;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 991px) {
+    .header {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
+  .title {
+    color: #000;
+    text-align: center;
+    align-self: stretch;
+    margin: auto 0;
+    font: 400 32px Inter, sans-serif;
+  }
+
+  .logo {
+    aspect-ratio: 0.72;
+    object-fit: auto;
+    object-position: center;
+    width: 140px;
+    align-self: stretch;
+    max-width: 100%;
+  }
+
+  .logout-button {
+    border-radius: 40px;
+    background-blend-mode: normal;
+    background-color: rgba(200, 223, 211, 0.918);
+    align-self: stretch;
+    align-items: start;
+    color: #c60d0d;
+    margin: auto 0;
+    padding: 16px 48px 7px;
+    font: 700 40px Heebo, sans-serif;
+  }
+
+  .divider {
+    border-color: rgba(12, 83, 6, 1);
+    border-style: solid;
+    border-width: 10px;
+    background-color: #0c5306;
+    align-self: stretch;
+    min-height: 10px;
+    margin-top: 26px;
+    width: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .divider {
+      max-width: 100%;
+    }
+  }
+
+  .main-content {
+    margin-top: 63px;
+    width: 100%;
+    max-width: 994px;
+  }
+
+  @media (max-width: 991px) {
+    .main-content {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .row {
+    gap: 20px;
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .row {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+
+  .left-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 72%;
+    margin-left: 0px;
+  }
+
+  @media (max-width: 991px) {
+    .left-column {
+      width: 100%;
+    }
+  }
+
+  .voting-section {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    font-size: 36px;
+    color: #000;
+    font-weight: 400;
+  }
+
+  @media (max-width: 991px) {
+    .voting-section {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .voting-title {
+    align-self: center;
+    font: 64px Jaldi, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .voting-title {
+      max-width: 100%;
+      font-size: 40px;
+    }
+  }
+
+  .start-button,
+  .stop-button {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Inter, sans-serif;
+    border-radius: 40px;
+    background-color: #81cac1;
+    margin-top: 45px;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  @media (max-width: 991px) {
+    .start-button,
+    .stop-button {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 28%;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .right-column {
+      width: 100%;
+    }
+  }
+
+  .timer {
+    border-radius: 40px;
+    background-blend-mode: normal;
+    background-color: rgba(200, 223, 211, 0.918);
+    margin-top: 42px;
+    align-items: start;
+    color: #000;
+    white-space: nowrap;
+    justify-content: center;
+    width: 100%;
+    padding: 28px 42px;
+    font: 700 36px Heebo, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .timer {
+      margin-top: 40px;
+      white-space: initial;
+      padding: 0 20px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header class="header">
+    <h1 class="title">Commence Elections</h1>
+    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/54a24ca1fcd8824dd793ac8c8a84111bc3cd0306be747843702e4c56d780985b?apiKey=483e3002dafb49fea17e927af8202b2e&" alt="" class="logo" />
+    <button class="logout-button" onclick="logout()">Logout!</button>
+  </header>
+  
+  <div class="divider"></div>
+  
+  <main class="main-content">
+    <div class="row">
+      <div class="left-column">
+        <section class="voting-section">
+          <h2 class="voting-title">E-VOTING SYSTEM</h2>
+          <button class="start-button" onclick="startTimer()">Start Election</button>
+          <button class="stop-button" onclick="stopTimer()">Stop Elections</button>
+        </section>
+      </div>
+      <div class="right-column">
+        <div class="timer" id="timer">Timer</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+    
+    
+// Function to make AJAX request to start the timer
+function startTimer() {
+  $.get("TimerServlet?action=start", function(data, status){
+    console.log("Timer started:", data);
+    // Handle response if needed
+  });
+}
+
+// Function to make AJAX request to stop the timer
+function stopTimer() {
+  $.get("TimerServlet?action=stop", function(data, status){
+    console.log("Timer stopped:", data);
+    // Handle response if needed
+  });
+}
+
+// Function to check the status of the election timer
+function checkTimerStatus() {
+  $.get("TimerServlet?action=checkStatus", function(data, status){
+    console.log("Timer status:", data);
+    // Update UI based on timer status
+    if (data === "true") {
+      // Timer is running (election started)
+      updateCastVoteButton(true);
+    } else {
+      // Timer is stopped (election ended)
+      updateCastVoteButton(false);
+    }
+  });
+}
+
+// Call the function to check timer status when the page loads
+checkTimerStatus();
+
+
+  // Function to start the timer and enable the Cast Vote button
+  function startElection() {
+    $.get("TimerServlet?action=start", function(data, status) {
+      console.log("Timer started:", data);
+      // Update UI to reflect election status
+      updateCastVoteButton(true);
+    });
+  }
+
+  // Function to stop the timer and disable the Cast Vote button
+  function stopElection() {
+    $.get("TimerServlet?action=stop", function(data, status) {
+      console.log("Timer stopped:", data);
+      // Update UI to reflect election status
+      updateCastVoteButton(false);
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<div class="div">
+  <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Emblem_of_the_Election_Commission_of_Pakistan.svg" class="img" />
+  <div class="div-2">WELCOME TO E-VOTING SYSTEM</div>
+  <button class="div-3" onclick="handleLogin()">
+    Login
+  </button>
+</div>
+
+<style>
+  .div {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 55px;
+    color: #000;
+    font-weight: 400;
+    padding: 46px 80px 77px;
+  }
+
+  @media (max-width: 991px) {
+    .div {
+      flex-wrap: wrap;
+      font-size: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .img {
+    aspect-ratio: 0.76;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    gap: 0px;
+    cursor: pointer;
+    pointer-events: auto;
+    max-width: 462px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 991px) {
+    .img {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
+  .div-2 {
+    font-family: Jaldi, sans-serif;
+    gap: 0px;
+  }
+
+  @media (max-width: 991px) {
+    .div-2 {
+      max-width: 100%;
+      flex-wrap: wrap;
+      font-size: 40px;
+    }
+  }
+
+  .div-3 {
+    font-family: Jaldi, sans-serif;
+    border-radius: 100px;
+    background-color: #d9d9d9;
+    width: 285px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 60px;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .div-3 {
+      font-size: 40px;
+      padding: 0 20px;
+    }
+  }
+</style>
+
+<script>
+  /**
+   * Handles the login button click event.
+   */
+function handleLogin() {
+    // Redirect to loginpage_voter.html
+    window.location.href = 'loginpage.html';
+  }
+</script>

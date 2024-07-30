@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Election System</title>
+<!-- Style tags can be included here or linked externally -->
+</head>
+<body>
+<div class="div">
+
+  <div class="div-2">
+    <div class="div-3">ECP High</div>
+    
+    <div class="img-container">
+      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/037ae83d06f74755792b0bdee942b1b6dd48d66b44e4078a177058dc1e574f8b?apiKey=a041c1aa184d4ffd8bcaa86d968e4047&" class="img" />
+    </div>
+    <div class="div-4">
+      <div class="div-5">ELECTIONS 2024</div>
+       <!-- Logout Button -->
+    <button class="div-6" onClick="handleLogout()">Logout!</button>
+
+    </div>
+  </div>
+  <div class="div-7"></div>
+  <div class="div-8">E-VOTING SYSTEM</div>
+  <button class="div-9" onClick="handleCommenceElections()">Commence Elections</button>
+  
+  <button class="div-10" onClick="handleDeclareResults()">Declare Results</button>
+
+  <button class="div-11" onClick="handleGraphResults()">Graph Results</button>
+
+</div>
+
+<style>
+    body {
+    margin: 0; /* Remove default margin */
+    overflow: hidden; /* Disable scrolling */
+  }
+
+  .div {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+    font-weight: 400;
+    padding: 15px 0 80px;
+    height: 100vh; /* Set the height of the container to 100% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if necessary */
+    position: relative; /* Add position relative to enable absolute positioning within it */
+  }
+
+  @media (max-width: 991px) {
+    .div {
+      flex-wrap: wrap;
+    }
+  }
+
+  .div-2 {
+    display: flex;
+    justify-content: space-between; /* Push elements to the ends */
+    align-items: center; /* Align items to the center vertically */
+    width: 100%;
+    max-width: 1232px;
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 991px) {
+    .div-2 {
+      max-width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
+  .div-3 {
+    color: #000;
+    font: 400 64px Jaldi, sans-serif;
+    margin-top: 20px; /* Adjust top margin */
+  }
+
+  @media (max-width: 991px) {
+    .div-3 {
+      font-size: 40px;
+    }
+  }
+
+
+  .img-container {
+    position: relative;
+    width: 100%;
+    max-width: 1232px;
+  }
+
+  .img {
+    aspect-ratio: 0.72;
+    object-fit: auto;
+    object-position: center;
+    width: 140px;
+    max-width: 100%;
+    position: absolute; /* Position the image absolutely */
+    top: 50%; /* Position at vertical center */
+    left: 50%; /* Position at horizontal center */
+    transform: translate(-50%, -50%); /* Adjust to center */
+  }
+
+  .div-5 {
+    color: #000;
+    font: 400 45px Orienta, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .div-5 {
+      font-size: 40px;
+    }
+  }
+
+  .div-6 {
+    border-radius: 100px;
+    background-color: #d9d9d9;
+    align-self: center;
+    margin-top: 29px;
+    width: 233px;
+    max-width: 100%;
+    align-items: start;
+    color: #c60d0d;
+    justify-content: center;
+    padding: 36px 20px;
+    font: 700 40px Heebo, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  .div-7 {
+    border-color: rgba(12, 83, 6, 1);
+    border-style: solid;
+    border-width: 10px;
+    background-color: #0c5306;
+    align-self: stretch;
+    min-height: 10px;
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .div-7 {
+      max-width: 100%;
+    }
+  }
+
+  .div-8 {
+    color: #000;
+    margin-top: 35px;
+    font: 400 64px Jaldi, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .div-8 {
+      max-width: 100%;
+      font-size: 40px;
+    }
+  }
+
+  .div-9 {
+    border-radius: 20px;
+    background-color: #81cac1;
+    margin-top: 66px;
+    width: 360px;
+    max-width: 100%;
+    color: #000;
+    text-align: center;
+    justify-content: center;
+    padding: 43px 23px;
+    font: 400 32px Inter, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .div-9 {
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .div-10 {
+    border-radius: 20px;
+    background-color: #81cac1;
+    margin-top: 66px;
+    width: 360px;
+    max-width: 100%;
+    align-items: center;
+    color: #000;
+    text-align: center;
+    justify-content: center;
+    padding: 44px 60px;
+    font: 400 32px Inter, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .div-10 {
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .div-11 {
+    border-radius: 20px;
+    background-color: #81cac1;
+    margin-top: 66px;
+    width: 360px;
+    max-width: 100%;
+    align-items: center;
+    color: #000;
+    text-align: center;
+    justify-content: center;
+    padding: 41px 60px;
+    font: 400 32px Inter, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  @media (max-width: 991px) {
+    .div-11 {
+      margin-top: 40px;
+      padding: 0 20px;
+    }
+  }
+</style>
+
+
+ <script>
+  // Wait for the DOM to be fully loaded before adding event listeners
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get references to the buttons
+    var logoutButton = document.querySelector('.div-6');
+    var commenceButton = document.querySelector('.div-9');
+    var declareButton = document.querySelector('.div-10');
+    var graphButton = document.querySelector('.div-11');
+
+    // Add event listeners to the buttons
+    logoutButton.addEventListener('click', handleLogout);
+    commenceButton.addEventListener('click', handleCommenceElections);
+    declareButton.addEventListener('click', handleDeclareResults);
+    graphButton.addEventListener('click', handleGraphResults);
+  });
+
+  function handleLogout() {
+    console.log("Logout button clicked!");
+    // Redirect to loginpage.html
+    window.location.href = 'loginpage.html';
+  }
+
+  function handleCommenceElections() {
+    // Redirect to commencepage_ecphigh.html
+    window.location.href = 'commencepage_ecphigh.html';
+  }
+
+  function handleDeclareResults() {
+    // Redirect to declareresultspage_ecphigh.html
+    window.location.href = 'declareresultspage_ecphigh.html';
+  }
+
+  function handleGraphResults() {
+    // Redirect to graphpage_ecphigh.html
+    window.location.href = 'graphpage_ecphigh.html';
+  }
+</script>
+
+</body>
+
+</html>

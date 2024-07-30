@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <!-- Include CSS styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="div">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/fa5dd5dbd6ee1c9bfa48d7167b3dcba947d377174a54f845e84efaa0d52a6115?apiKey=59d8e0e12b2f4732af7799202d29434d&" class="img" />
+        <div class="div-2"></div>
+        <div class="div-3">E-VOTING SYSTEM</div>
+        <div class="div-4">
+            <div class="div-5">Login</div>
+            <form id="loginForm" action="adminlogin" method="post"> <!-- Change action to adminlogin -->
+                <input type="text" id="username" class="div-6" placeholder="Enter username" style="font-size: 20px; padding: 20px; width: 90%;" /> <!-- Change id to username -->
+                <input type="password" id="password" class="div-7" placeholder="Enter Password" style="font-size: 20px; padding: 20px; width: 90%;" /> <!-- Change id to password -->
+                <div class="div-8">
+                    <button type="submit" class="div-9" style="font-size: 20px; padding: 20px 40px;">Login</button> <!-- Change onClick to type="submit" -->
+                    <button class="div-10" onClick="window.location.href='loginpage.html'" style="font-size: 20px; padding: 20px 40px;">Exit</button> <!-- Redirect to loginpage_ecplow.html -->
+                </div>
+            </form>
+            <div id="errorMessage" class="error-message" style="display: none; "></div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript code -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<script>
+// Wait for the DOM to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    // Attach event listener to the form submit event
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting traditionally
+
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        // Check if username or password is empty
+        if (username.trim() === "" || password.trim() === "") {
+            displayError("Username and password are required");
+            return;
+        }
+
+        // Make an AJAX request to the login servlet
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "adminlogin", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function() {
+            if (xhr.status === 401) {
+                // Unauthorized
+                displayError("Invalid username or password");
+            } else if (xhr.status === 200) {
+                // Redirect on successful login
+                window.location.href = "homepage_admin.html";
+            } else {
+                // Other errors
+                alert("Login failed: " + xhr.responseText);
+            }
+        };
+        xhr.onerror = function() {
+            alert("Error making the request.");
+        };
+        xhr.send("username=" + encodeURIComponent(username) + "&password=" + encodeURIComponent(password));
+    });
+
+    // Function to display error message
+    function displayError(message) {
+        var errorElement = document.getElementById("errorMessage");
+        errorElement.innerText = message;
+        errorElement.style.display = "block";
+        
+        // Hide the error message after 2 seconds
+        setTimeout(function() {
+            errorElement.style.display = "none";
+        }, 2000);
+    }
+});
+
+
+</script>
+
+<style>
+    
+   /* Adjust error message styling */
+.error-message {
+    color: #ff0000; /* Red color for error messages */
+    font-size: 22px; /* Adjust font size */
+    margin-top: 5px; /* Add some space between input and error message */
+    display: block; /* Ensure error message is displayed as block element */
+}
+
+/* Add a border to error message container */
+.error-message-container {
+    border: 2px solid #ff0000; /* Red border for error message container */
+    padding: 10px; /* Add padding to error message container */
+    margin-top: 10px; /* Add some space above error message container */
+}
+
+body {
+    margin: 0; /* Remove default margin */
+    
+}
+
+.div {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: #000;
+    font-weight: 400;
+    padding: 15px 0 80px;
+    height: 100vh; /* Set the height of the container to 100% of the viewport height */
+    overflow-y: auto; /* Enable vertical scrolling if necessary */
+}
+
+@media (max-width: 991px) {
+    .div {
+        flex-wrap: wrap;
+    }
+}
+
+.img {
+    aspect-ratio: 0.72;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    gap: 0px;
+    max-width: 140px;
+}
+
+.div-2 {
+    border-color: rgba(12, 83, 6, 1);
+    border-style: solid;
+    border-width: 10px;
+    background-color: #0c5306;
+    align-self: stretch;
+    min-height: 10px;
+    margin-top: 26px;
+    width: 100%;
+    gap: 0px;
+}
+
+@media (max-width: 991px) {
+    .div-2 {
+        max-width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+.div-3 {
+    gap: 0px;
+    font: 64px Jaldi, sans-serif;
+}
+
+@media (max-width: 991px) {
+    .div-3 {
+        max-width: 100%;
+        flex-wrap: wrap;
+        font-size: 40px;
+    }
+}
+
+.div-4 {
+    background-color: #d9d9d9;
+    display: flex;
+    flex-direction: column; /* Changed to column */
+    align-items: center; /* Center align items */
+    gap: 20px;
+    font-size: 20px;
+    padding: 46px 80px;
+}
+
+@media (max-width: 991px) {
+    .div-4 {
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
+}
+
+.div-5 {
+    mix-blend-mode: darken;
+    align-self: center;
+    margin-top: -37px;
+    gap: 0px;
+    font: 30px Jaldi, sans-serif;
+}
+
+.div-6,
+.div-7 {
+    font-family: Heebo, sans-serif;
+    background-color: #fff;
+    width: calc(100% - 34px); /* Adjust width to accommodate padding and border */
+    padding: 10px; /* Reduce padding */
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    margin-right: 10px; /* Add margin to the right */
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.div-8 {
+    align-self: center;
+    display: flex;
+    gap: 10px; /* Reduce gap between buttons */
+    font-size: 28px;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+
+.div-9,
+.div-10 {
+    font-family: Istok Web, sans-serif;
+    border-radius: 20px;
+    background-color: #81cac1;
+    align-items: start;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin-right: 100px;
+}
+
+.div-9 {
+    margin-left: 100px; /* Adjust margin to the right of login button */
+}
+
+
+@media (max-width: 991px) {
+    .div-9,
+    .div-10 {
+        white-space: initial;
+        padding: 10px 20px; /* Adjust padding */
+    }
+}
+
+
+</style>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<style>
+  .container {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 9px 0 80px;
+  }
+
+  .header {
+    margin-left: 101px;
+    width: 689px;
+    max-width: 100%;
+  }
+
+  .header-content {
+    gap: 20px;
+    display: flex;
+  }
+
+  @media (max-width: 991px) {
+    .header-content {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+  }
+
+  .constituency-info {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 77%;
+    margin-left: 0;
+  }
+
+  @media (max-width: 991px) {
+    .constituency-info {
+      width: 100%;
+    }
+  }
+
+  .constituency-name {
+    color: #000;
+    margin-top: 92px;
+    font: 400 100px Orienta, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .constituency-name {
+      margin-top: 40px;
+      font-size: 40px;
+    }
+  }
+
+  .map-container {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 23%;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .map-container {
+      width: 100%;
+    }
+  }
+
+  .map-image {
+    aspect-ratio: 0.72;
+    object-fit: auto;
+    object-position: center;
+    width: 140px;
+    max-width: 100%;
+    flex-grow: 1;
+  }
+
+  @media (max-width: 991px) {
+    .map-image {
+      margin-top: 40px;
+    }
+  }
+
+  .divider {
+    border-color: rgba(12, 83, 6, 1);
+    border-style: solid;
+    border-width: 10px;
+    background-color: #0c5306;
+    min-height: 10px;
+    margin-top: 30px;
+    width: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .divider {
+      max-width: 100%;
+    }
+  }
+
+  .results-container {
+    align-self: center;
+    display: flex;
+    margin-top: 25px;
+    width: 100%;
+    max-width: 1004px;
+    flex-direction: column;
+    font-size: 55px;
+    color: #000;
+    font-weight: 400;
+    padding: 0 20px;
+  }
+
+  @media (max-width: 991px) {
+    .results-container {
+      max-width: 100%;
+      font-size: 40px;
+    }
+  }
+
+  .view-results-button {
+    font-family: Jaldi, sans-serif;
+    background-color: #d9d9d9;
+    align-self: center;
+    justify-content: center;
+    padding: 44px 35px;
+  }
+
+  @media (max-width: 991px) {
+    .view-results-button {
+      font-size: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .winner-heading {
+    font-family: Jaldi, sans-serif;
+    align-self: start;
+    margin: 195px 0 0 13px;
+  }
+
+  @media (max-width: 991px) {
+    .winner-heading {
+      font-size: 40px;
+      margin: 40px 0 0 10px;
+    }
+  }
+
+  .candidates-container {
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+    font-size: 50px;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 991px) {
+    .candidates-container {
+      max-width: 100%;
+      flex-wrap: wrap;
+      font-size: 40px;
+    }
+  }
+
+  .candidate-info {
+    background-color: #81cac1;
+    display: flex;
+    flex-direction: column;
+    padding: 49px 30px;
+  }
+
+  @media (max-width: 991px) {
+    .candidate-info {
+      font-size: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .candidate-name {
+    font-family: Jaldi, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .candidate-name {
+      font-size: 40px;
+    }
+  }
+
+  .candidate-party {
+    font-family: Jaldi, sans-serif;
+    margin-top: 49px;
+  }
+
+  @media (max-width: 991px) {
+    .candidate-party {
+      margin-top: 40px;
+      font-size: 40px;
+    }
+  }
+
+  .candidate-votes {
+    font-family: Jaldi, sans-serif;
+    margin-top: 37px;
+  }
+
+  @media (max-width: 991px) {
+    .candidate-votes {
+      font-size: 40px;
+    }
+  }
+
+  .vs-text {
+    margin: auto 0;
+    font: 55px Jaldi, sans-serif;
+  }
+
+  @media (max-width: 991px) {
+    .vs-text {
+      font-size: 40px;
+    }
+  }
+</style>
+
+<div class="container">
+  <header class="header">
+    <div class="header-content">
+      <div class="constituency-info">
+        <h1 class="constituency-name">NA-120</h1>
+      </div>
+      <div class="map-container">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/037ae83d06f74755792b0bdee942b1b6dd48d66b44e4078a177058dc1e574f8b?apiKey=483e3002dafb49fea17e927af8202b2e&" alt="Map of NA-120 constituency" class="map-image" />
+      </div>
+    </div>
+  </header>
+  
+  <div class="divider"></div>
+  
+  <section class="results-container">
+    <button class="view-results-button">VIEW RESULTS</button>
+    <h2 class="winner-heading">WINNER</h2>
+    
+    <div class="candidates-container">
+      <div class="candidate-info">
+        <h3 class="candidate-name">Candidate1 Name</h3>
+        <p class="candidate-party">Party1 Name</p>
+        <p class="candidate-votes">No. of Votes</p>
+      </div>
+      
+      <span class="vs-text">VS</span>
+      
+      <div class="candidate-info">
+        <h3 class="candidate-name">Candidate2 Name</h3>
+        <p class="candidate-party">Party2 Name</p>
+        <p class="candidate-votes">No. of Votes</p>
+      </div>
+    </div>
+  </section>
+</div>

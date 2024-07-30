@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vote Casting - NA-120</title>
+
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: #006400;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav button {
+  background-color: #f4f4f4;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #90ee90;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #006400;
+  color: white;
+}
+
+.vote-btn, .done-btn {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.vote-btn:hover, .done-btn:hover {
+  background-color: #45a049;
+}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>NA-120</h1>
+  <nav>
+    <button>Home</button>
+    <button>Demo</button>
+    <button>View Results</button>
+  </nav>
+</div>
+<h2>ELECTIONS 2024</h2>
+<table id="candidatesTable">
+  <thead>
+    <tr>
+      <th>Candidate's Name</th>
+      <th>Party Name</th>
+      <th>Election Symbol</th>
+      <th>Vote</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Candidate data will be dynamically populated here -->
+  </tbody>
+</table>
+<button class="vote-btn">PA Voting</button>
+<button class="done-btn">Done</button>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('CandidateServlet')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.querySelector('#candidate tbody');
+      data.forEach(candidate => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${candidate.name}</td>
+          <td>${candidate.partyName}</td>
+          <td><img src="data:image/jpeg;base64,${candidate.symbol}" alt="Symbol"></td>
+          <td><input type="checkbox" name="vote" value="${candidate.partyId}"></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error('Error fetching candidates:', error));
+});
+
+</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('VoteServlet')
+    .then(response => response.json())
+    .then(data => {
+      const tableBody = document.querySelector('#candidatesTable tbody');
+      data.forEach(candidate => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${candidate.name}</td>
+          <td>${candidate.partyName}</td>
+          <td><img src="data:image/jpeg;base64,${candidate.symbol}" alt="Symbol"></td>
+          <td><input type="checkbox" name="vote" value="${candidate.id}"></td>
+        `;
+        tableBody.appendChild(row);
+      });
+    })
+    .catch(error => console.error('Error fetching candidates:', error));
+});
+</script>
+
+</body>
+</html>
